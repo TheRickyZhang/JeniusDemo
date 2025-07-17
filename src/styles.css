@@ -1,0 +1,21 @@
+/* styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /* primary green shades */
+        --color-primary:       #059669;  /* green‑600 */
+        --color-primary-light: #10b981;  /* green‑500 */
+        --color-primary-dark:  #047857;  /* green‑700 */
+
+        /* background & text */
+        --color-bg:     #ffffff;
+        --color-text:   #ffffff;
+
+        /* input */
+        --color-input-bg:   #10b981;
+        --color-input-text: #ffffff;
+    }
+}
