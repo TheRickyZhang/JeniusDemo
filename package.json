@@ -6,10 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "vinxi dev",
-    "build": "bun run db:push && bun run db:seed && bun run generateContent && bunx dotenv -- vinxi build",
+    "build": "bun run db:push && bunx dotenv -- vinxi build",
     "start": "vinxi start",
     "fix": "concurrently \"eslint . --fix\" \"prettier --write .\"",
-    "generateContent": "bun run scripts/generateImageMaps.ts && bun run scripts/generateSlides.ts",
     "lint": "concurrently \"bun run tsc -b tsconfig.json\" \"eslint .\" \"prettier --check .\"",
     "test": "vitest --run",
     "test:watch": "vitest",

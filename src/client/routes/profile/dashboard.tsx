@@ -1,132 +1,136 @@
 // src/routes/profile/index.tsx
-import { acceptMentorMenteeInvite, deleteMentorMenteeInvite, getAllMentorMenteeInvites } from "@/client/api/mentorMentee";
+import React, { useEffect } from "react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { seo } from "@/client/utils/seo";
+import { useAuth } from "@/client/hooks/AuthContext";
+import { Page } from "@/client/components/Page";
+import { Button } from "@ui/button";
 import AccountBox from "@/client/components/profile/AccountBox";
-import { useAuth } from "@hooks/AuthContext";
-import { useUsers } from "@hooks/useUsers";
-import type { User } from "@shared/schema/userSchema";
-import { createFileRoute } from "@tanstack/react-router";
-import React, { useEffect, useState } from "react";
-
-type Invite = { id: string; mentorId: string; menteeId: string };
 
 export const Route = createFileRoute("/profile/dashboard")({
+  meta: () =>
+      seo({
+        title:       "My Dashboard | Acme Bank",
+        description: "Your account overview and quick access to all services.",
+        image:       "/assets/BankLogo.png", // TODO: drop your logo here
+      }),
+
   component: () => {
-    const { id, isAdmin } = useAuth();
-    const { error: userError, isLoading: userLoading, isLoadingUsers, user, users } = useUsers(id);
+    const {isAuthenticated, isLoading, logout } = useAuth();
+    const navigate                           = useNavigate();
 
-    const [invites, setInvites] = useState<Array<Invite>>([]);
-    const [allUsers, setAllUsers] = useState<Array<User>>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-
+    // redirect to login if not authenticated
     useEffect(() => {
-      if (!id) return;
-      setLoading(true);
-      setError(null);
-      getAllMentorMenteeInvites(id)
-        .then(setInvites)
-        .catch(() => setError("Failed to load invites"))
-        .finally(() => setLoading(false));
-      try {
-        setLoading(true);
-        console.log(users);
-        const userArray: Array<User> = [];
-        users?.forEach((user) => {
-          const userObj: User = { ...user, password: "······" };
-          userArray.push(userObj);
-        });
-        setAllUsers(userArray);
-        console.log(allUsers);
-      } catch {
-        setError("Failed to retrieve all users list");
+      if (!isLoading && !isAuthenticated) {
+        navigate({ to: "/login" });
       }
-    }, [id, isLoadingUsers]);
+    }, [isLoading, isAuthenticated, navigate]);
 
-    const handleAccept = async (inviteId: string) => {
-      try {
-        await acceptMentorMenteeInvite(inviteId);
-        setInvites((prev) => prev.filter((i) => i.id !== inviteId));
-      } catch {
-        setError("Failed to accept invite");
-      }
-    };
-    const handleDecline = async (inviteId: string) => {
-      try {
-        await deleteMentorMenteeInvite(inviteId);
-        setInvites((prev) => prev.filter((i) => i.id !== inviteId));
-      } catch {
-        setError("Failed to decline invite");
-      }
-    };
+    if (isLoading || !isAuthenticated) return null;
 
-    if (userLoading || loading) return <div>Loading…</div>;
-    if (userError) return <div className="text-red-600">Error: {userError.message}</div>;
-    if (error) return <div className="text-red-600">Error: {error}</div>;
-    if (!user) return <div>User data unavailable</div>;
+    // TODO: fetch full user record (email, timestamps, etc.) via your own hook or api
+    // For demonstration, we'll pass placeholders into AccountBox:
+    const dummyEmail      = "you@example.com";
+    const dummyTimeAdded  = Date.now() - 1000 * 60 * 60 * 24 * 7;
+    const dummyTimeUpdate = Date.now();
 
     return (
-      <div className="flex min-h-screen justify-center bg-gray-50 py-8">
-        {/* Centered card just like AccountBox */}
-        <div className="w-full max-w-4xl space-y-10 rounded-2xl bg-white px-10 py-8 shadow-xl">
-          <h1 className="text-2xl font-bold">Dashboard</h1>
+        <Page>
+          <div className="mx-auto max-w-7xl p-8">
+            {/* Header */}
+            <div className="flex items-center justify-between">
+              <h1 className="text-4xl font-bold text-[#783DF2]">My Dashboard</h1>
+              <div className="flex gap-2">
+                <Link to="/dashboard">
+                  <Button variant="outline" size="sm">
+                    Main Dashboard
+                  </Button>
+                </Link>
+                <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => logout().then(() => navigate({ to: "/login" }))}
+                >
+                  Logout
+                </Button>
+              </div>
+            </div>
 
-          {/* Pending Invites */}
-          <section className="space-y-4">
-            <h2 className="text-xl font-semibold">Pending Invites</h2>
-            {invites.length === 0 ? (
-              <div className="rounded-lg border border-dashed border-gray-300 p-6 text-center text-gray-500">No pending invites.</div>
-            ) : (
-              <ul className="space-y-3">
-                {invites.map((invite) => (
-                  <li key={invite.id} className="flex items-center justify-between rounded-lg border px-4 py-3">
-                    <span>
-                      Invite from <strong>{invite.mentorId}</strong>
-                    </span>
-                    <div className="space-x-2">
-                      <button onClick={() => handleAccept(invite.id)} className="rounded bg-green-500 px-3 py-1 text-white hover:bg-green-600">
-                        Accept
-                      </button>
-                      <button onClick={() => handleDecline(invite.id)} className="rounded bg-red-500 px-3 py-1 text-white hover:bg-red-600">
-                        Decline
-                      </button>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </section>
-
-          {/* Roles (placeholder) */}
-          {isAdmin && (
-            <section className="flex w-full flex-col space-y-4">
-              <h1 className="text-3xl font-bold text-saseBlue">Admin Dashboard</h1>
-              <h2 className="text-xl font-semibold">Users</h2>
-              {loading ? (
-                <p>Loading users...</p>
-              ) : (
-                <div className="flex w-full flex-col gap-6">
-                  {users != undefined ? (
-                    users.length > 0 ? (
-                      users.map((user) => <AccountBox key={user.id} {...user} adminView={true} />)
-                    ) : (
-                      <p>No Users found</p>
-                    )
-                  ) : (
-                    <div>Users could not be loaded</div>
-                  )}
-                </div>
-              )}
+            {/* Account Info */}
+            <section className="mt-8">
+              <AccountBox
+                  email={dummyEmail}
+                  timeAdded={dummyTimeAdded}
+                  timeUpdated={dummyTimeUpdate}
+                  points={0}
+                  roles={undefined}
+                  adminView={false}
+              />
             </section>
-          )}
-          
 
-          {/* Customization (placeholder) */}
-          <section className="space-y-4">
-            <h2 className="text-xl font-semibold">Customization</h2>
-            <div className="rounded-lg border border-dashed border-gray-300 p-6 text-center text-gray-500">Nothing to configure yet.</div>
-          </section>
-        </div>
-      </div>
+            {/* Quick Actions */}
+            <section className="mt-12">
+              <h2 className="text-2xl font-semibold mb-4">Quick Actions</h2>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                <Link
+                    to="/project-finance"
+                    className="block rounded-lg border bg-white p-6 text-center shadow hover:shadow-lg transition"
+                >
+                  <img
+                      src="/assets/icons/finance.svg"
+                      alt="Project Finance"
+                      className="mx-auto mb-4 h-12 w-12"
+                  />
+                  <span className="mt-2 block text-xl font-medium text-[#783DF2]">
+                  Project Finance
+                </span>
+                </Link>
+
+                <Link
+                    to="/crypto-connect"
+                    className="block rounded-lg border bg-white p-6 text-center shadow hover:shadow-lg transition"
+                >
+                  <img
+                      src="/assets/icons/crypto.svg"
+                      alt="Crypto‑Connect"
+                      className="mx-auto mb-4 h-12 w-12"
+                  />
+                  <span className="mt-2 block text-xl font-medium text-[#783DF2]">
+                  Crypto‑Connect
+                </span>
+                </Link>
+
+                <Link
+                    to="/wealth-investment"
+                    className="block rounded-lg border bg-white p-6 text-center shadow hover:shadow-lg transition"
+                >
+                  <img
+                      src="/assets/icons/wealth.svg"
+                      alt="Wealth & Investment"
+                      className="mx-auto mb-4 h-12 w-12"
+                  />
+                  <span className="mt-2 block text-xl font-medium text-[#783DF2]">
+                  Wealth & Investment
+                </span>
+                </Link>
+
+                <Link
+                    to="/profile"
+                    className="block rounded-lg border bg-white p-6 text-center shadow hover:shadow-lg transition"
+                >
+                  <img
+                      src="/assets/icons/settings.svg"
+                      alt="Account Settings"
+                      className="mx-auto mb-4 h-12 w-12"
+                  />
+                  <span className="mt-2 block text-xl font-medium text-[#783DF2]">
+                  Account Settings
+                </span>
+                </Link>
+              </div>
+            </section>
+          </div>
+        </Page>
     );
   },
 });

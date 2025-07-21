@@ -18,7 +18,6 @@ import { Route as SearchImport } from './routes/search'
 import { Route as ResetPasswordImport } from './routes/reset-password'
 import { Route as ProjectFinanceImport } from './routes/project-finance'
 import { Route as LoginImport } from './routes/login'
-import { Route as DashboardImport } from './routes/dashboard'
 import { Route as CryptoConnectImport } from './routes/crypto-connect'
 import { Route as AuthedImport } from './routes/authed'
 import { Route as AboutImport } from './routes/about'
@@ -27,7 +26,6 @@ import { Route as IndexImport } from './routes/index'
 import { Route as ProfileIndexImport } from './routes/profile/index'
 import { Route as ProfileSettingsImport } from './routes/profile/settings'
 import { Route as ProfileSecurityImport } from './routes/profile/security'
-import { Route as ProfileInfoImport } from './routes/profile/info'
 import { Route as ProfileDashboardImport } from './routes/profile/dashboard'
 import { Route as UsersUsernameIdImport } from './routes/users/$username/$id'
 
@@ -72,12 +70,6 @@ const ProjectFinanceRoute = ProjectFinanceImport.update({
 const LoginRoute = LoginImport.update({
   id: '/login',
   path: '/login',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const DashboardRoute = DashboardImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -126,12 +118,6 @@ const ProfileSettingsRoute = ProfileSettingsImport.update({
 const ProfileSecurityRoute = ProfileSecurityImport.update({
   id: '/security',
   path: '/security',
-  getParentRoute: () => ProfileRouteRoute,
-} as any)
-
-const ProfileInfoRoute = ProfileInfoImport.update({
-  id: '/info',
-  path: '/info',
   getParentRoute: () => ProfileRouteRoute,
 } as any)
 
@@ -184,13 +170,6 @@ declare module '@tanstack/react-router' {
       path: '/crypto-connect'
       fullPath: '/crypto-connect'
       preLoaderRoute: typeof CryptoConnectImport
-      parentRoute: typeof rootRoute
-    }
-    '/dashboard': {
-      id: '/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof DashboardImport
       parentRoute: typeof rootRoute
     }
     '/login': {
@@ -249,13 +228,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileDashboardImport
       parentRoute: typeof ProfileRouteImport
     }
-    '/profile/info': {
-      id: '/profile/info'
-      path: '/info'
-      fullPath: '/profile/info'
-      preLoaderRoute: typeof ProfileInfoImport
-      parentRoute: typeof ProfileRouteImport
-    }
     '/profile/security': {
       id: '/profile/security'
       path: '/security'
@@ -291,7 +263,6 @@ declare module '@tanstack/react-router' {
 
 interface ProfileRouteRouteChildren {
   ProfileDashboardRoute: typeof ProfileDashboardRoute
-  ProfileInfoRoute: typeof ProfileInfoRoute
   ProfileSecurityRoute: typeof ProfileSecurityRoute
   ProfileSettingsRoute: typeof ProfileSettingsRoute
   ProfileIndexRoute: typeof ProfileIndexRoute
@@ -299,7 +270,6 @@ interface ProfileRouteRouteChildren {
 
 const ProfileRouteRouteChildren: ProfileRouteRouteChildren = {
   ProfileDashboardRoute: ProfileDashboardRoute,
-  ProfileInfoRoute: ProfileInfoRoute,
   ProfileSecurityRoute: ProfileSecurityRoute,
   ProfileSettingsRoute: ProfileSettingsRoute,
   ProfileIndexRoute: ProfileIndexRoute,
@@ -315,7 +285,6 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/authed': typeof AuthedRoute
   '/crypto-connect': typeof CryptoConnectRoute
-  '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/project-finance': typeof ProjectFinanceRoute
   '/reset-password': typeof ResetPasswordRoute
@@ -324,7 +293,6 @@ export interface FileRoutesByFullPath {
   '/userpage': typeof UserpageRoute
   '/wealth-investment': typeof WealthInvestmentRoute
   '/profile/dashboard': typeof ProfileDashboardRoute
-  '/profile/info': typeof ProfileInfoRoute
   '/profile/security': typeof ProfileSecurityRoute
   '/profile/settings': typeof ProfileSettingsRoute
   '/profile/': typeof ProfileIndexRoute
@@ -336,7 +304,6 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/authed': typeof AuthedRoute
   '/crypto-connect': typeof CryptoConnectRoute
-  '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/project-finance': typeof ProjectFinanceRoute
   '/reset-password': typeof ResetPasswordRoute
@@ -345,7 +312,6 @@ export interface FileRoutesByTo {
   '/userpage': typeof UserpageRoute
   '/wealth-investment': typeof WealthInvestmentRoute
   '/profile/dashboard': typeof ProfileDashboardRoute
-  '/profile/info': typeof ProfileInfoRoute
   '/profile/security': typeof ProfileSecurityRoute
   '/profile/settings': typeof ProfileSettingsRoute
   '/profile': typeof ProfileIndexRoute
@@ -359,7 +325,6 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/authed': typeof AuthedRoute
   '/crypto-connect': typeof CryptoConnectRoute
-  '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/project-finance': typeof ProjectFinanceRoute
   '/reset-password': typeof ResetPasswordRoute
@@ -368,7 +333,6 @@ export interface FileRoutesById {
   '/userpage': typeof UserpageRoute
   '/wealth-investment': typeof WealthInvestmentRoute
   '/profile/dashboard': typeof ProfileDashboardRoute
-  '/profile/info': typeof ProfileInfoRoute
   '/profile/security': typeof ProfileSecurityRoute
   '/profile/settings': typeof ProfileSettingsRoute
   '/profile/': typeof ProfileIndexRoute
@@ -383,7 +347,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/authed'
     | '/crypto-connect'
-    | '/dashboard'
     | '/login'
     | '/project-finance'
     | '/reset-password'
@@ -392,7 +355,6 @@ export interface FileRouteTypes {
     | '/userpage'
     | '/wealth-investment'
     | '/profile/dashboard'
-    | '/profile/info'
     | '/profile/security'
     | '/profile/settings'
     | '/profile/'
@@ -403,7 +365,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/authed'
     | '/crypto-connect'
-    | '/dashboard'
     | '/login'
     | '/project-finance'
     | '/reset-password'
@@ -412,7 +373,6 @@ export interface FileRouteTypes {
     | '/userpage'
     | '/wealth-investment'
     | '/profile/dashboard'
-    | '/profile/info'
     | '/profile/security'
     | '/profile/settings'
     | '/profile'
@@ -424,7 +384,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/authed'
     | '/crypto-connect'
-    | '/dashboard'
     | '/login'
     | '/project-finance'
     | '/reset-password'
@@ -433,7 +392,6 @@ export interface FileRouteTypes {
     | '/userpage'
     | '/wealth-investment'
     | '/profile/dashboard'
-    | '/profile/info'
     | '/profile/security'
     | '/profile/settings'
     | '/profile/'
@@ -447,7 +405,6 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AuthedRoute: typeof AuthedRoute
   CryptoConnectRoute: typeof CryptoConnectRoute
-  DashboardRoute: typeof DashboardRoute
   LoginRoute: typeof LoginRoute
   ProjectFinanceRoute: typeof ProjectFinanceRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
@@ -464,7 +421,6 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AuthedRoute: AuthedRoute,
   CryptoConnectRoute: CryptoConnectRoute,
-  DashboardRoute: DashboardRoute,
   LoginRoute: LoginRoute,
   ProjectFinanceRoute: ProjectFinanceRoute,
   ResetPasswordRoute: ResetPasswordRoute,
@@ -490,7 +446,6 @@ export const routeTree = rootRoute
         "/about",
         "/authed",
         "/crypto-connect",
-        "/dashboard",
         "/login",
         "/project-finance",
         "/reset-password",
@@ -508,7 +463,6 @@ export const routeTree = rootRoute
       "filePath": "profile/route.tsx",
       "children": [
         "/profile/dashboard",
-        "/profile/info",
         "/profile/security",
         "/profile/settings",
         "/profile/"
@@ -522,9 +476,6 @@ export const routeTree = rootRoute
     },
     "/crypto-connect": {
       "filePath": "crypto-connect.tsx"
-    },
-    "/dashboard": {
-      "filePath": "dashboard.tsx"
     },
     "/login": {
       "filePath": "login.tsx"
@@ -549,10 +500,6 @@ export const routeTree = rootRoute
     },
     "/profile/dashboard": {
       "filePath": "profile/dashboard.tsx",
-      "parent": "/profile"
-    },
-    "/profile/info": {
-      "filePath": "profile/info.tsx",
       "parent": "/profile"
     },
     "/profile/security": {
