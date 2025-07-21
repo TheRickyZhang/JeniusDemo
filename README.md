@@ -1,6 +1,6 @@
 # Jenius Website
 
-[Production](https://jenius-demo-fwaoy3q62-ricky-zhangs-projects-839c8dc8.vercel.app/)
+Production: [https://jenius-demo.vercel.app/](https://jenius-demo.vercel.app/)
 
 ## Getting Started
 
