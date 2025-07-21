@@ -29,7 +29,7 @@ export const Route = createFileRoute("/login")({
         await login(data.email, data.password);
       },
       onSuccess: () => {
-        navigate({ to: "/dashboard" });
+        navigate({ to: "/profile/dashboard" });
       },
       onError: (err) => {
         setErrorMessage(err.message ?? "Login failed");
