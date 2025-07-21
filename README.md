@@ -1,8 +1,6 @@
 # Jenius Website
 
-This repository hosts the official website for the UF chapter of the Society of Asian Scientists and Engineers (SASE), built by our wonderful Web Team! It uses a modern stack including Bun, TypeScript, React, Tanstack Router, Hono, and Drizzle.
-[Staging](https://uf-sase-website.vercel.app)
-[Production](https://ufsase.com)
+[Production](https://jenius-demo-fwaoy3q62-ricky-zhangs-projects-839c8dc8.vercel.app/)
 
 ## Getting Started
 
@@ -16,8 +14,8 @@ This repository hosts the official website for the UF chapter of the Society of 
 To get started, clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/ufsasewebmaster/UF-SASE-Website
-cd UF-SASE-Website
+git clone [https://github.com/ufsasewebmaster/UF-SASE-Website](https://github.com/TheRickyZhang/JeniusDemo)
+cd Jenius-Demo
 ```
 
 ### Installing Dependencies
@@ -32,11 +30,9 @@ bun install
 
 Create a `.env` file in the root directory of the project with this format. For production values, refer to our env document, or otherwise refer to the corresponding documentation for generation. 
 ```
-DATABASE_URL="file:local.db"  # Turso
+// file:local.db for locan database
+DATABASE_URL=""
 DATABASE_AUTH_TOKEN=""
-RESEND_API_KEY=""             # Resend
-GOOGLE_CLIENT_EMAIL=""        # Google IAM
-GOOGLE_PRIVATE_KEY=""
 ```
 
 ### Initializing the Local Database/Environment
