@@ -1,0 +1,5 @@
+**/build
+**/public
+pnpm-lock.yaml
+README.md
+src/client/routeTree.gen.ts

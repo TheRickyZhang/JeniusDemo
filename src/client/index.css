@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 218.4 20.3% 20.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 222.2 47.4% 11.2%;
+
+    --input: 214.3 31.8% 91.4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 218.4 20.3% 56.9%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: #a0aec0; /* Gray-400 */
+  border-radius: 9999px; /* Rounded-full */
+  transition: background-color 300ms; /* Transition */
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background-color: #6b7280; /* Darker Gray */
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background-color: #edf2f7; /* Gray-200 */
+  border-radius: 9999px;
+}
+
+.scrollbar-thinner::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-thinner::-webkit-scrollbar-thumb {
+  background-color: #a0aec0; /* Gray-400 */
+  border-radius: 9999px; /* Fully rounded */
+  transition: background-color 300ms; /* Smooth transition */
+}
+
+.scrollbar-thinner::-webkit-scrollbar-thumb:hover {
+  background-color: #6b7280; /* Darker Gray */
+}
+
+.scrollbar-thinner::-webkit-scrollbar-track {
+  background-color: #edf2f7; /* Gray-200 */
+  border-radius: 9999px;
+}
+
+.flex-center {
+  @apply flex items-center justify-center;
+}
+.flex-between {
+  @apply flex items-center justify-between;
+}
+
+.btn-hover {
+  @apply flex h-10 items-center justify-center rounded-full border-2 border-gray-700 bg-saseBlue text-white shadow-[0px_5px_0px_0px_rgb(203,203,212)] transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-saseGreen hover:text-black;
+}
+
+.content-container {
+  @apply mx-[5%] border-b-4 border-t-4 border-b-saseGreen border-t-saseBlue px-10 py-10 lg:px-20;
+}
+
+.shadow-sase {
+  @apply shadow-[5px_5px_0px_0px_rgb(125,194,66)];
+}
+
+.shadow-blue {
+  @apply shadow-[10px_10px_0px_0px_rgb(6,104,179)];
+}
+
+.gallery-border {
+  @apply rounded-lg border-2 border-black shadow-[5px_5px_0px_0px_rgb(6,104,179)];
+}
+
+.icon-btn {
+  @apply cursor-pointer text-gray-600 hover:text-black;
+}
+
+.dropdown-container {
+  @apply w-full rounded-lg border-2 border-border text-left font-redhat text-lg shadow-[5px_5px_0px_0px_rgb(125,194,66)] hover:cursor-pointer hover:opacity-70;
+}
+
+.dropdown-transition {
+  @apply overflow-hidden transition-[max-height,opacity,transform] duration-300 ease-in-out;
+}
+
+.dropdown-item {
+  @apply flex items-center py-1 text-muted-foreground hover:text-foreground;
+}
+
+.dropdown-button {
+  @apply flex cursor-pointer items-center justify-center rounded-full border-2 border-gray-700 p-1 hover:opacity-70;
+}
+
+.image-transition {
+  @apply max-h-96 rounded-lg border-2 border-black object-cover shadow-[5px_5px_0px_0px_rgb(30,119,186)];
+}
+
+.search-bar {
+  @apply w-32 rounded-full border border-gray-600 py-2 pl-10 pr-3 text-black placeholder-gray-600 transition-all duration-300 ease-in-out focus:w-64 focus:outline-none;
+}
+
+.search-dropdown {
+  @apply absolute left-0 z-50 mt-2 w-64 overflow-hidden rounded-lg border border-gray-300 bg-white shadow-lg;
+}
+
+.search-result {
+  @apply block cursor-pointer px-4 py-2 text-black duration-300 hover:scale-105 hover:bg-gray-200 hover:text-[#0f6cb6];
+}
+
+.search-result.selected {
+  @apply scale-105 bg-gray-200 text-[#0f6cb6] duration-300;
+}
+
+.no-results {
+  @apply px-4 py-2 text-gray-600;
+}
