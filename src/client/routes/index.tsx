@@ -46,9 +46,10 @@ export const Route = createFileRoute("/")({
 
           <section
               className="relative h-screen bg-cover bg-center"
-              style={{ backgroundImage: "url(/images/hero.jpg)" }}
+              style={{backgroundImage: "url(/images/hero.jpg)" }}
           >
             {/* green‑tinted overlay */}
+            <div className="absolute inset-0 bg-black bg-opacity-50" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-green-900/40" />
 
             <div className="relative z-10 flex items-center justify-center h-full px-6">

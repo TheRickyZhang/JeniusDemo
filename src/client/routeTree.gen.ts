@@ -18,6 +18,7 @@ import { Route as SearchImport } from './routes/search'
 import { Route as SavingsImport } from './routes/savings'
 import { Route as ResetPasswordImport } from './routes/reset-password'
 import { Route as ProjectFinanceImport } from './routes/project-finance'
+import { Route as PersonalLoansImport } from './routes/personal-loans'
 import { Route as LoginImport } from './routes/login'
 import { Route as CryptoConnectImport } from './routes/crypto-connect'
 import { Route as AuthedImport } from './routes/authed'
@@ -71,6 +72,12 @@ const ResetPasswordRoute = ResetPasswordImport.update({
 const ProjectFinanceRoute = ProjectFinanceImport.update({
   id: '/project-finance',
   path: '/project-finance',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PersonalLoansRoute = PersonalLoansImport.update({
+  id: '/personal-loans',
+  path: '/personal-loans',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -184,6 +191,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginImport
+      parentRoute: typeof rootRoute
+    }
+    '/personal-loans': {
+      id: '/personal-loans'
+      path: '/personal-loans'
+      fullPath: '/personal-loans'
+      preLoaderRoute: typeof PersonalLoansImport
       parentRoute: typeof rootRoute
     }
     '/project-finance': {
@@ -300,6 +314,7 @@ export interface FileRoutesByFullPath {
   '/authed': typeof AuthedRoute
   '/crypto-connect': typeof CryptoConnectRoute
   '/login': typeof LoginRoute
+  '/personal-loans': typeof PersonalLoansRoute
   '/project-finance': typeof ProjectFinanceRoute
   '/reset-password': typeof ResetPasswordRoute
   '/savings': typeof SavingsRoute
@@ -320,6 +335,7 @@ export interface FileRoutesByTo {
   '/authed': typeof AuthedRoute
   '/crypto-connect': typeof CryptoConnectRoute
   '/login': typeof LoginRoute
+  '/personal-loans': typeof PersonalLoansRoute
   '/project-finance': typeof ProjectFinanceRoute
   '/reset-password': typeof ResetPasswordRoute
   '/savings': typeof SavingsRoute
@@ -342,6 +358,7 @@ export interface FileRoutesById {
   '/authed': typeof AuthedRoute
   '/crypto-connect': typeof CryptoConnectRoute
   '/login': typeof LoginRoute
+  '/personal-loans': typeof PersonalLoansRoute
   '/project-finance': typeof ProjectFinanceRoute
   '/reset-password': typeof ResetPasswordRoute
   '/savings': typeof SavingsRoute
@@ -365,6 +382,7 @@ export interface FileRouteTypes {
     | '/authed'
     | '/crypto-connect'
     | '/login'
+    | '/personal-loans'
     | '/project-finance'
     | '/reset-password'
     | '/savings'
@@ -384,6 +402,7 @@ export interface FileRouteTypes {
     | '/authed'
     | '/crypto-connect'
     | '/login'
+    | '/personal-loans'
     | '/project-finance'
     | '/reset-password'
     | '/savings'
@@ -404,6 +423,7 @@ export interface FileRouteTypes {
     | '/authed'
     | '/crypto-connect'
     | '/login'
+    | '/personal-loans'
     | '/project-finance'
     | '/reset-password'
     | '/savings'
@@ -426,6 +446,7 @@ export interface RootRouteChildren {
   AuthedRoute: typeof AuthedRoute
   CryptoConnectRoute: typeof CryptoConnectRoute
   LoginRoute: typeof LoginRoute
+  PersonalLoansRoute: typeof PersonalLoansRoute
   ProjectFinanceRoute: typeof ProjectFinanceRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   SavingsRoute: typeof SavingsRoute
@@ -443,6 +464,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthedRoute: AuthedRoute,
   CryptoConnectRoute: CryptoConnectRoute,
   LoginRoute: LoginRoute,
+  PersonalLoansRoute: PersonalLoansRoute,
   ProjectFinanceRoute: ProjectFinanceRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   SavingsRoute: SavingsRoute,
@@ -469,6 +491,7 @@ export const routeTree = rootRoute
         "/authed",
         "/crypto-connect",
         "/login",
+        "/personal-loans",
         "/project-finance",
         "/reset-password",
         "/savings",
@@ -502,6 +525,9 @@ export const routeTree = rootRoute
     },
     "/login": {
       "filePath": "login.tsx"
+    },
+    "/personal-loans": {
+      "filePath": "personal-loans.tsx"
     },
     "/project-finance": {
       "filePath": "project-finance.tsx"
