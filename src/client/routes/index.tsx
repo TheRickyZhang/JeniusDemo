@@ -2,6 +2,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { seo } from "../utils/seo";
 
+import { PieChart, CreditCard, Briefcase, Banknote } from "lucide-react";
+
 export const Route = createFileRoute("/")({
   meta: () =>
       seo({
@@ -14,28 +16,28 @@ export const Route = createFileRoute("/")({
   component: () => {
     const services = [
       {
-        title: "Basic",
-        desc: "Get started with our essential banking services, designed for everyday financial needs.",
-        img: "/images/basic.jpg",
-        link: "/services/basic",
+        Icon: PieChart,
+        title: "Project Finance",
+        desc: "Customized funding solutions for corporate and infrastructure projects.",
+        link: "/project-finance",
       },
       {
-        title: "Professional",
-        desc: "Elevate your banking experience with advanced tools and dedicated support for professionals.",
-        img: "/images/professional.jpg",
-        link: "/services/professional",
+        Icon: CreditCard,
+        title: "Crypto‑Connect",
+        desc: "Secure custody and on‑chain payment services for businesses.",
+        link: "/crypto-connect",
       },
       {
-        title: "Business",
-        desc: "Empower your business with tailored financial solutions and expert guidance.",
-        img: "/images/business.jpg",
-        link: "/services/business",
+        Icon: Briefcase,
+        title: "Wealth & Investment",
+        desc: "Personalized investment strategies to grow and protect your assets.",
+        link: "/wealth-investment",
       },
       {
-        title: "Enterprise",
-        desc: "Drive growth and efficiency with our comprehensive enterprise banking solutions.",
-        img: "/images/enterprise.jpg",
-        link: "/services/enterprise",
+        Icon: Banknote,
+        title: "Savings",
+        desc: "High‑yield savings with no fees or minimums.",
+        link: "/savings",
       },
     ];
 
@@ -98,7 +100,7 @@ export const Route = createFileRoute("/")({
               </div>
               <div>
                 <img
-                    src="/images/vision.jpg"
+                    src="/images/vision.png"
                     alt="Our Vision"
                     className="rounded-lg shadow-lg"
                 />
@@ -109,26 +111,20 @@ export const Route = createFileRoute("/")({
           {/* Our Services */}
           <section className="bg-gray-50 dark:bg-gray-900 py-16">
             <div className="container mx-auto px-4">
-              <h2 className="text-4xl font-bold text-center mb-12">
-                Our Services
-              </h2>
+              <h2 className="text-4xl font-bold text-center mb-12">Our Services</h2>
               <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-                {services.map((s) => (
+                {services.map(({ Icon, desc, link, title }) => (
                     <div
-                        key={s.title}
+                        key={title}
                         className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex flex-col items-center text-center"
                     >
-                      <img
-                          src={s.img}
-                          alt={s.title}
-                          className="w-32 h-32 object-cover rounded-full mb-4"
-                      />
-                      <h3 className="text-2xl font-semibold mb-2">{s.title}</h3>
-                      <p className="text-gray-600 dark:text-gray-400 mb-4">
-                        {s.desc}
-                      </p>
+                      <div className="mb-4 rounded-full bg-green-100 p-4">
+                        <Icon className="h-8 w-8 text-green-600" />
+                      </div>
+                      <h3 className="text-2xl font-semibold mb-2">{title}</h3>
+                      <p className="text-gray-600 dark:text-gray-400 mb-4">{desc}</p>
                       <Link
-                          to={s.link}
+                          to={link}
                           className="mt-auto bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded"
                       >
                         Read more
@@ -138,6 +134,7 @@ export const Route = createFileRoute("/")({
               </div>
             </div>
           </section>
+
 
           {/* Our Story */}
           <section className="container mx-auto px-4">
