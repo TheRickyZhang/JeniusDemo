@@ -60,7 +60,7 @@ const NavItemComponent: React.FC<{ darkMode: boolean; isHomePage: boolean; item:
             {item.children &&
               Array.isArray(item.children) &&
               item.children.map((child) => (
-                <li key={child.name} className={`p-2 ${isHomePage || darkMode ? "hover:bg-gray-700" : "hover:bg-gray-200"}`}>
+                <li key={child.name} className={`p-2 ${isHomePage ? "hover:bg-gray-700" : "hover:bg-gray-200"}`}>
                   <NavLink to={child.path ?? "#"} onClick={() => setDropdownOpen(false)}>
                     {child.name}
                   </NavLink>

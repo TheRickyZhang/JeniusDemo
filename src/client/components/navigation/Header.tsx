@@ -85,7 +85,7 @@ const Header: React.FC = () => {
                     >
                       <Briefcase
                           className="h-6 w-6"
-                          color={isHomePage || darkMode ? "#fff" : "#000"}
+                          color={isHomePage ? "#fff" : "#000"}
                       />
                     </Link>
                   </>
@@ -112,7 +112,7 @@ const Header: React.FC = () => {
                   <Link to="/profile/dashboard" className="p-1">
                     <Briefcase
                         className="h-5 w-5"
-                        color={isHomePage || darkMode ? "#fff" : "#000"}
+                        color={isHomePage ? "#fff" : "#000"}
                     />
                   </Link>
                 </>
@@ -121,7 +121,7 @@ const Header: React.FC = () => {
               <Hamburger
                   toggled={menuOpen}
                   toggle={setMenuOpen}
-                  color={isHomePage || darkMode ? "#fff" : "#000"}
+                  color={isHomePage ? "#fff" : "#000"}
                   size={22}
               />
             </button>
