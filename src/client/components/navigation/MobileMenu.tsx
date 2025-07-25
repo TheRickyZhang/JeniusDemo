@@ -32,7 +32,9 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ darkMode, isHomePage, is
   const menuClasses = cn(
     "fixed right-0 top-16 h-auto w-auto rounded-bl-2xl pb-20 font-redhat text-lg shadow-md transition-all duration-300 ease-in-out",
     isOpen ? "pointer-events-auto translate-x-0 opacity-100" : "pointer-events-none translate-x-20 opacity-0",
-    isHomePage || darkMode ? "bg-black text-white" : "bg-white text-black",
+      darkMode
+          ? "bg-black text-white"
+          : "bg-green-50 text-black",
   );
 
   const ulClasses = cn("flex w-full flex-col items-end space-y-2 pb-4 pr-4 pt-3");

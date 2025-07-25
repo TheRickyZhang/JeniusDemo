@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
             <div className="mb-4">
               {/* TODO: add BankLogo.png to /assets/ */}
               <img
-                  src="/images/BankLogo.jpg"
+                  src="/images/BankLogo.png"
                   alt="Bank Logo"
                   className="h-12 w-auto"
               />

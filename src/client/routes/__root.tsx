@@ -5,7 +5,6 @@ import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 import { Body, Head, Html, Meta, Scripts } from "@tanstack/start";
 import * as React from "react";
 import { Toaster } from "react-hot-toast";
-import { seo } from "src/client/utils/seo";
 import { DarkModeProvider } from "@components/DarkModeProvider";
 import Footer from "../components/navigation/Footer";
 import Header from "../components/navigation/Header";
@@ -14,20 +13,6 @@ import { AuthProvider } from "@hooks/AuthContext";
 import css from "../index.css?url";
 
 export const Route = createRootRoute({
-  meta: () => [
-    {
-      charSet: "utf-8",
-    },
-    {
-      name: "viewport",
-      content: "width=device-width, initial-scale=1",
-    },
-    ...seo({
-      title: "Jenius Homepage",
-      description:
-        "UF Society of Asian Scientists & Engineers, committed to fostering meaningful connections across cultures and empowering Asian Pacific Islander Desi American (APIDA) professionals in science and engineering.",
-    }),
-  ],
   links: () => [
     { rel: "stylesheet", href: css },
     { rel: "icon", href: "/favicon.ico" },

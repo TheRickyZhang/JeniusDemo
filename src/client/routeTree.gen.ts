@@ -15,6 +15,7 @@ import { Route as WealthInvestmentImport } from './routes/wealth-investment'
 import { Route as UserpageImport } from './routes/userpage'
 import { Route as SignupImport } from './routes/signup'
 import { Route as SearchImport } from './routes/search'
+import { Route as SavingsImport } from './routes/savings'
 import { Route as ResetPasswordImport } from './routes/reset-password'
 import { Route as ProjectFinanceImport } from './routes/project-finance'
 import { Route as LoginImport } from './routes/login'
@@ -52,6 +53,12 @@ const SignupRoute = SignupImport.update({
 const SearchRoute = SearchImport.update({
   id: '/search',
   path: '/search',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const SavingsRoute = SavingsImport.update({
+  id: '/savings',
+  path: '/savings',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -193,6 +200,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResetPasswordImport
       parentRoute: typeof rootRoute
     }
+    '/savings': {
+      id: '/savings'
+      path: '/savings'
+      fullPath: '/savings'
+      preLoaderRoute: typeof SavingsImport
+      parentRoute: typeof rootRoute
+    }
     '/search': {
       id: '/search'
       path: '/search'
@@ -288,6 +302,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/project-finance': typeof ProjectFinanceRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/savings': typeof SavingsRoute
   '/search': typeof SearchRoute
   '/signup': typeof SignupRoute
   '/userpage': typeof UserpageRoute
@@ -307,6 +322,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/project-finance': typeof ProjectFinanceRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/savings': typeof SavingsRoute
   '/search': typeof SearchRoute
   '/signup': typeof SignupRoute
   '/userpage': typeof UserpageRoute
@@ -328,6 +344,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/project-finance': typeof ProjectFinanceRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/savings': typeof SavingsRoute
   '/search': typeof SearchRoute
   '/signup': typeof SignupRoute
   '/userpage': typeof UserpageRoute
@@ -350,6 +367,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/project-finance'
     | '/reset-password'
+    | '/savings'
     | '/search'
     | '/signup'
     | '/userpage'
@@ -368,6 +386,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/project-finance'
     | '/reset-password'
+    | '/savings'
     | '/search'
     | '/signup'
     | '/userpage'
@@ -387,6 +406,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/project-finance'
     | '/reset-password'
+    | '/savings'
     | '/search'
     | '/signup'
     | '/userpage'
@@ -408,6 +428,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   ProjectFinanceRoute: typeof ProjectFinanceRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
+  SavingsRoute: typeof SavingsRoute
   SearchRoute: typeof SearchRoute
   SignupRoute: typeof SignupRoute
   UserpageRoute: typeof UserpageRoute
@@ -424,6 +445,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   ProjectFinanceRoute: ProjectFinanceRoute,
   ResetPasswordRoute: ResetPasswordRoute,
+  SavingsRoute: SavingsRoute,
   SearchRoute: SearchRoute,
   SignupRoute: SignupRoute,
   UserpageRoute: UserpageRoute,
@@ -449,6 +471,7 @@ export const routeTree = rootRoute
         "/login",
         "/project-finance",
         "/reset-password",
+        "/savings",
         "/search",
         "/signup",
         "/userpage",
@@ -485,6 +508,9 @@ export const routeTree = rootRoute
     },
     "/reset-password": {
       "filePath": "reset-password.tsx"
+    },
+    "/savings": {
+      "filePath": "savings.tsx"
     },
     "/search": {
       "filePath": "search.tsx"

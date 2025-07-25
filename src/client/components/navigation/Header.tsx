@@ -12,14 +12,15 @@ import { SearchBar } from "@navigation/SearchBar";
 import { UserButton } from "@navigation/UserButton";
 import { Link, useLocation } from "@tanstack/react-router";
 import { Squash as Hamburger } from "hamburger-react";
-import { User, Briefcase } from "lucide-react";
+import { Briefcase } from "lucide-react";
 
 const SCREEN_BREAKPOINT = 1024;
 const navItems = [
-  { name: "Home", path: "/" },
   { name: "Project Finance", path: "/project-finance" },
   { name: "Crypto‑Connect", path: "/crypto-connect" },
   { name: "Wealth & Investment", path: "/wealth-investment" },
+  { name: "Savings", path: "/savings" },
+  { name: "Personal Loans", path: "/personal-loans" },
 ];
 
 const Header: React.FC = () => {
@@ -55,10 +56,9 @@ const Header: React.FC = () => {
       <header
           className={cn(
               `sticky left-0 top-0 z-50 w-full font-redhat font-medium shadow-md`,
-              {
-                "bg-black text-white": isHomePage,
-                "bg-background text-foreground": !isHomePage,
-              }
+              darkMode
+                  ? "bg-green-800 text-white"
+                  : "bg-green-300 text-black"
           )}
       >
         <nav className="relative flex h-16 w-full items-center justify-between px-4 py-3 md:px-8">
@@ -80,7 +80,7 @@ const Header: React.FC = () => {
               {isAuthenticated && (
                   <>
                     <Link
-                        to="/dashboard"
+                        to="/profile/dashboard"
                         className="p-2 rounded hover:bg-gray-200"
                     >
                       <Briefcase
@@ -109,7 +109,7 @@ const Header: React.FC = () => {
             <SearchBar />
             {isAuthenticated && (
                 <>
-                  <Link to="/dashboard" className="p-1">
+                  <Link to="/profile/dashboard" className="p-1">
                     <Briefcase
                         className="h-5 w-5"
                         color={isHomePage || darkMode ? "#fff" : "#000"}

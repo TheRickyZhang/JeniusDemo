@@ -46,14 +46,17 @@ const NavItemComponent: React.FC<{ darkMode: boolean; isHomePage: boolean; item:
 
           {/* Dropdown Menu */}
           <ul
-            className={cn(`absolute left-0 mt-2 w-40 rounded border shadow-lg group-hover:block`, {
-              hidden: !dropdownOpen,
-              block: dropdownOpen,
-              "border-black bg-black text-white": isHomePage || darkMode,
-              "border-white bg-white text-black": !isHomePage && !darkMode,
-            })}
-            style={{ paddingTop: "10px", marginTop: "0px" }} // Ensure dropdown is positioned without affecting the title
+              className={cn(
+                  `absolute left-0 mt-2 w-40 rounded border shadow-lg group-hover:block`,
+                  {
+                    hidden:    !dropdownOpen,
+                    block:     dropdownOpen,
+                    "border-black bg-black text-white":                  darkMode,
+                    "border-green-100 bg-green-50 text-black":           !darkMode,
+                  }
+              )}
           >
+
             {item.children &&
               Array.isArray(item.children) &&
               item.children.map((child) => (
