@@ -66,7 +66,7 @@ const Header: React.FC = () => {
           <Logo />
 
           {/* Desktop Nav */}
-          <div className="hidden w-full items-center justify-between md:flex">
+          <div className="hidden w-full items-center justify-between lg:flex">
             <div className="ml-auto flex items-center gap-2">
               <DesktopMenu
                   darkMode={darkMode}
@@ -105,7 +105,7 @@ const Header: React.FC = () => {
           </div>
 
           {/* Mobile Nav */}
-          <div className="ml-auto flex items-center gap-2 md:hidden">
+          <div className="ml-auto flex items-center gap-2 lg:hidden">
             <SearchBar />
             {isAuthenticated && (
                 <>
