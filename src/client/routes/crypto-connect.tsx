@@ -43,9 +43,9 @@ function CryptoConnectPage() {
           alt="Crypto‑Connect Hero"
           className="absolute inset-0 w-full h-full object-cover opacity-30"
         />
-        <div className="absolute inset-0 bg-purple-900/20" />
+        <div className="absolute inset-0 bg-green-900/20" />
         <div className="relative z-10 mx-auto flex h-full max-w-3xl items-center justify-center px-4 text-center">
-          <div className="bg-purple-600 p-8 rounded-2xl shadow-lg">
+          <div className="bg-green-600 p-8 rounded-2xl shadow-lg">
             <h1 className="text-4xl font-bold text-white mb-4">
               Crypto‑Connect
             </h1>
@@ -69,7 +69,7 @@ function CryptoConnectPage() {
                 key={title}
                 className="group relative overflow-hidden rounded-lg border bg-gradient-to-br from-purple-50 to-purple-100 p-6 text-center transition-shadow hover:shadow-xl"
               >
-                <div className="mx-auto mb-4 inline-block rounded-full bg-purple-600 p-4 text-white transition-transform group-hover:scale-110">
+                <div className="mx-auto mb-4 inline-block rounded-full bg-green-600 p-4 text-white transition-transform group-hover:scale-110">
                   <Icon className="h-8 w-8" strokeWidth={1.5} />
                 </div>
                 <h3 className="mb-2 text-xl font-medium">{title}</h3>
@@ -89,7 +89,7 @@ function CryptoConnectPage() {
           <p className="mx-auto mb-8 max-w-xl text-gray-700">
             Speak with our blockchain experts to get started.
           </p>
-          <button className="rounded-full bg-purple-600 px-8 py-3 text-white shadow transition hover:bg-purple-700">
+          <button className="rounded-full bg-green-600 px-8 py-3 text-white shadow transition hover:bg-green-700">
             Request Demo
           </button>
         </div>

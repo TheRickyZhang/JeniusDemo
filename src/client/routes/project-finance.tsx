@@ -95,11 +95,11 @@ function ProjectFinancePage() {
                     className="absolute inset-0 w-full h-full object-cover opacity-30"
                 />
 
-                <div className="absolute inset-0 bg-purple-900/20"/>
+                <div className="absolute inset-0 bg-green-900/20"/>
 
                 {/* Centered text card */}
                 <div className="relative z-10 mx-auto flex h-full max-w-3xl items-center justify-center px-4">
-                    <div className="bg-purple-600 p-8 rounded-2xl shadow-lg">
+                    <div className="bg-green-600 p-8 rounded-2xl shadow-lg">
                         <p className="text-lg md:text-xl lg:text-2xl font-medium text-white leading-relaxed">
                             Customized funding solutions to power your infrastructure,
                             real‑estate, and corporate initiatives.
@@ -122,7 +122,7 @@ function ProjectFinancePage() {
                                 className="group relative overflow-hidden rounded-lg border bg-gradient-to-br from-purple-50 to-purple-100 p-6 text-center transition-shadow hover:shadow-xl"
                             >
                                 <div
-                                    className="mx-auto mb-4 inline-block rounded-full bg-purple-600 p-4 text-white transition-transform group-hover:scale-110">
+                                    className="mx-auto mb-4 inline-block rounded-full bg-green-600 p-4 text-white transition-transform group-hover:scale-110">
                                     <Icon className="h-8 w-8" strokeWidth={1.5}/>
                                 </div>
                                 <h3 className="mb-2 text-xl font-medium">{title}</h3>
@@ -163,7 +163,7 @@ function ProjectFinancePage() {
                     </p>
                     <div className="overflow-x-auto rounded-lg border bg-white shadow-sm">
                         <table className="w-full table-auto border-collapse">
-                            <thead className="bg-purple-100">
+                            <thead className="bg-green-100">
                             <tr>
                                 <th className="border px-4 py-2 text-left">Project</th>
                                 <th className="border px-4 py-2 text-center">Risk</th>
@@ -264,7 +264,7 @@ function ProjectFinancePage() {
                         program.
                     </p>
                     <button
-                        className="rounded-full bg-purple-600 px-8 py-3 text-white shadow transition hover:bg-purple-700">
+                        className="rounded-full bg-green-600 px-8 py-3 text-white shadow transition hover:bg-green-700">
                         Invest Now
                     </button>
                 </div>

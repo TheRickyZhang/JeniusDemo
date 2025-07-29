@@ -48,9 +48,9 @@ function WealthInvestmentPage() {
                     alt="Wealth & Investment Hero"
                     className="absolute inset-0 w-full h-full object-cover opacity-30"
                 />
-                <div className="absolute inset-0 bg-purple-900/20" />
+                <div className="absolute inset-0 bg-green-900/20" />
                 <div className="relative z-10 mx-auto flex h-full max-w-4xl items-center justify-center px-4">
-                    <div className="bg-purple-600 p-8 rounded-2xl shadow-lg">
+                    <div className="bg-green-600 p-8 rounded-2xl shadow-lg">
                         <h1 className="text-4xl font-bold text-white mb-4">
                             Wealth &amp; Investment
                         </h1>
@@ -74,7 +74,7 @@ function WealthInvestmentPage() {
                                 key={title}
                                 className="rounded-lg border bg-gray-50 p-6 text-center shadow-sm transition-shadow hover:shadow-lg"
                             >
-                                <div className="mx-auto mb-4 inline-block rounded-full bg-purple-600 p-4 text-white">
+                                <div className="mx-auto mb-4 inline-block rounded-full bg-green-600 p-4 text-white">
                                     <Icon className="h-6 w-6" strokeWidth={1.5} />
                                 </div>
                                 <h3 className="mb-2 text-xl font-medium">{title}</h3>
@@ -92,7 +92,7 @@ function WealthInvestmentPage() {
                     <p className="mx-auto mb-8 max-w-xl text-gray-700">
                         Schedule a consultation with our wealth advisors today.
                     </p>
-                    <button className="rounded-full bg-purple-600 px-8 py-3 text-white shadow transition hover:bg-purple-700">
+                    <button className="rounded-full bg-green-600 px-8 py-3 text-white shadow transition hover:bg-green-700">
                         Schedule a Call
                     </button>
                 </div>
